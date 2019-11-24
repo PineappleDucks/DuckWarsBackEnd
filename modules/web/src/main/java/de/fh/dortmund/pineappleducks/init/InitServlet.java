@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(value = "/init")
+@WebServlet("/init")
 public class InitServlet extends HttpServlet {
 
     @Override
@@ -19,9 +19,6 @@ public class InitServlet extends HttpServlet {
         writer.println("<html><head><title>helloworld</title></head><body>");
         writer.println("<h1>Hello World</h1>");
         writer.println("</body></html>");
-        writer.close();
-
-//        super.doGet(req, resp);
     }
 
 
