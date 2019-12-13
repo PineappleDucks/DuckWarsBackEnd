@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.LinkedHashMap;
-import java.util.Collections;
-import java.util.*;
 import com.google.gson.*;
 
 
@@ -35,8 +33,8 @@ public class InitServlet extends HttpServlet {
             System.err.println(e.getMessage());
         }
 }
-
-       //hello=halli&key2=value2&key3=value3
+        //Method to seperate the keys and values of the get-method in a LinkedHashMap
+        //hello=halli&key2=value2&key3=value3
     private LinkedHashMap dequery(String query){
         LinkedHashMap map = new LinkedHashMap();
         try {
