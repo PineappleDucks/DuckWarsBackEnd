@@ -91,4 +91,5 @@ public class Message {
     public static void setIdCounter(int idCounter) {
         Message.idCounter = idCounter;
     }
+
 }
