@@ -1,22 +1,39 @@
 package de.fh.dortmund.pineappleducks.loginEJB;
+import de.fh.dortmund.pineappleducks.model;
+import de.fh.dortmund.pineappleducks.manager;
 
 public class Login implements java.io.Serializable{
-    String Password;
-    String Name;
+    User user = new User();
+    UserManager manager = new UserManager();
 
     public Login(String name, String password){
-        this.Password = password;
-        this.Name = name;
+        user.setPassword(password);
+        user.setUsername(name);
     }
 
     public boolean checkLogin(){
-        return true;
+        User test;
+        test = manager.getUserByNameAndPassword(user.getUsername(), user.getPassword());
+        if(user.getUsername()==test.getUsername()){
+            return true;
+        }
+        else{
+            return false;
+        }
+
     }
     public boolean checkName(){
-        return true;
+        User test;
+        test = manager.getUserByName(user.getUsername());
+        if(user.getUsername()==test.getUsername()){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     public void register(){
-
+        manager.registerUser(user.getUsername(), user.getPassword());
     }
     public void getSave(){
 

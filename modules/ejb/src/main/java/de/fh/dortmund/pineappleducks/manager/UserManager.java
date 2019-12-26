@@ -34,5 +34,12 @@ public class UserManager {
         return user;
     }
 
+    public  void registerUser(String username, String password){
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("TEST");
+        EntityManager man = factory.createEntityManager();
 
+        Query query = man.createQuery(
+                "INSERT INTO User u (u.sername, u.password) VALUES (:username, :password)", User.class);
+        query.setParameter("username", username);
+        query.setParameter("password", password);
 }
