@@ -19,6 +19,7 @@
         <module>modules/web</module>
         <module>modules/ejb</module>
         <module>solutions/ear-deployment</module>
+        <module>modules/api</module>
     </modules>
 
     <dependencies>
