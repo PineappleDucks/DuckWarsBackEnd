@@ -9,7 +9,7 @@ import javax.persistence.Query;
 
 public class UserManager {
 
-    public User getUserByName(String username){
+    public User getUserByName(String username) {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("TEST");
         EntityManager man = factory.createEntityManager();
 
@@ -21,7 +21,7 @@ public class UserManager {
         return user;
     }
 
-    public User getUserByNameAndPassword(String username, String password){
+    public User getUserByNameAndPassword(String username, String password) {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("TEST");
         EntityManager man = factory.createEntityManager();
 
@@ -34,7 +34,7 @@ public class UserManager {
         return user;
     }
 
-    public  void registerUser(String username, String password){
+    public void registerUser(String username, String password) {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("TEST");
         EntityManager man = factory.createEntityManager();
 
@@ -42,4 +42,5 @@ public class UserManager {
                 "INSERT INTO User u (u.sername, u.password) VALUES (:username, :password)", User.class);
         query.setParameter("username", username);
         query.setParameter("password", password);
+    }
 }
