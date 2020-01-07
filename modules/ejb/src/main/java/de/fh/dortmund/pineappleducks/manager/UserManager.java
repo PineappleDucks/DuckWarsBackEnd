@@ -1,6 +1,6 @@
 package de.fh.dortmund.pineappleducks.manager;
 
-import de.fh.dortmund.pineappleducks.model.User;
+import de.fh.dortmund.pineappleducks.entity.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -34,12 +34,16 @@ public class UserManager {
         return user;
     }
 
-    public  void registerUser(String username, String password){
+    public  void registerUser(String username, String password) {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("TEST");
         EntityManager man = factory.createEntityManager();
 
-        Query query = man.createQuery(
-                "INSERT INTO User u (u.sername, u.password) VALUES (:username, :password)", User.class);
-        query.setParameter("username", username);
-        query.setParameter("password", password);
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+
+        man.getTransaction().begin();
+        man.persist(user);
+        man.getTransaction().commit();
+    }
 }
