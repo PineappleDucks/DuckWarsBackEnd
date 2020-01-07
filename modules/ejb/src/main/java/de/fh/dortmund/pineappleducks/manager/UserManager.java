@@ -34,7 +34,7 @@ public class UserManager {
         return user;
     }
 
-    public  void registerUser(String username, String password) {
+    public  void registerUser(String username, String password){
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("TEST");
         EntityManager man = factory.createEntityManager();
 
