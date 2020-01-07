@@ -1,6 +1,8 @@
 package de.fh.dortmund.pineappleducks.loginEJB;
-import de.fh.dortmund.pineappleducks.model;
-import de.fh.dortmund.pineappleducks.manager;
+
+
+import de.fh.dortmund.pineappleducks.entity.User;
+import de.fh.dortmund.pineappleducks.manager.UserManager;
 
 public class Login implements java.io.Serializable{
     User user = new User();
