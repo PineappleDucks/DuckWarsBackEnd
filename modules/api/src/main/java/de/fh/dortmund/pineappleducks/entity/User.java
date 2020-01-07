@@ -1,4 +1,4 @@
-package de.fh.dortmund.pineappleducks.model;
+package de.fh.dortmund.pineappleducks.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
