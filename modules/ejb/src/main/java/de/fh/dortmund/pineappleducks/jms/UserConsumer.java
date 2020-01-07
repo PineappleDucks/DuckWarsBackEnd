@@ -5,7 +5,6 @@ import de.fh.dortmund.pineappleducks.action.user.UserAction;
 import de.fh.dortmund.pineappleducks.action.user.UserActionDefinition;
 import de.fh.dortmund.pineappleducks.action.user.UserLoginAction;
 import de.fh.dortmund.pineappleducks.action.user.UserRegistrationAction;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
@@ -68,7 +67,7 @@ public class UserConsumer implements MessageListener {
             action = new UserLoginAction(userAction.user);
         }
         else{
-            throw new NotImplementedException();
+            throw new IllegalArgumentException("provided unknown action!");
         }
 
         action.run();
