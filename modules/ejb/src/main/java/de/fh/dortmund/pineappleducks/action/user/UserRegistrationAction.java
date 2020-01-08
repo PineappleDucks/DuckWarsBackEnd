@@ -2,6 +2,7 @@ package de.fh.dortmund.pineappleducks.action.user;
 
 import de.fh.dortmund.pineappleducks.action.Action;
 import de.fh.dortmund.pineappleducks.entity.User;
+import de.fh.dortmund.pineappleducks.manager.UserManager;
 
 public class UserRegistrationAction implements Action {
 
@@ -13,6 +14,7 @@ public class UserRegistrationAction implements Action {
 
     @Override
     public void run() {
-        //TODO Registration
+        UserManager userManager = new UserManager();
+        userManager.registerUser(user.getUsername(), user.getPassword());
     }
 }
