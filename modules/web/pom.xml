@@ -15,13 +15,13 @@
             <groupId>de.fh.dortmund.pineappleducks</groupId>
             <artifactId>ejb</artifactId>
             <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>de.fh.dortmund.pineappleducks</groupId>
             <artifactId>api</artifactId>
             <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
