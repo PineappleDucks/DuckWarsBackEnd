@@ -26,6 +26,12 @@
             <version>${project.version}</version>
             <type>ejb</type>
         </dependency>
+        <dependency>
+            <groupId>de.fh.dortmund.pineappleducks</groupId>
+            <artifactId>api</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 
     <build>
@@ -45,6 +51,11 @@
                     <groupId>de.fh.dortmund.pineappleducks</groupId>
                     <artifactId>ejb</artifactId>
                 </ejbModule>
+                <jarModule>
+                    <groupId>de.fh.dortmund.pineappleducks</groupId>
+                    <artifactId>api</artifactId>
+                    <includeInApplicationXml>true</includeInApplicationXml>
+                </jarModule>
             </modules>
         </configuration>
     </plugin>
