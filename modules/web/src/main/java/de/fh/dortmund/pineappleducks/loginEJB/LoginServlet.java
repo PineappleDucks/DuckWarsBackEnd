@@ -1,17 +1,11 @@
 package de.fh.dortmund.pineappleducks.loginEJB;
 
-import de.fh.dortmund.pineappleducks.loginEJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.LinkedHashMap;
-import java.util.Collections;
-import java.util.*;
-import com.google.gson.*;
 
 
 @WebServlet("/login")
@@ -20,24 +14,25 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Login login = new Login(req.getName(), req.getPassword());
-     If(login.checkName()==true){
-            System.err.println("Fehler, der Name "+name+" ist schon vergeben");
+        String username = req.getParameter("name");
+        String password = req.getParameter("password");
+
+        Login login = new Login(username, password);
+        if(login.checkName()==true){
+            System.err.println("Fehler, der Name "+username+" ist schon vergeben");
         }
-        ELSE{
+        else{
          login.register();
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Login login = new Login();
-        IF(login.checkLogin==true){
-            login.getSave();
-        }
-        ELSE{
-            System.err.println("Fehler, der Name oder das Passwort ist falsch.");
-        }
+        String username = req.getParameter("name");
+        String password = req.getParameter("password");
+
+        Login login = new Login(username, password);
+        //TODO Check login
     }
 
 }
