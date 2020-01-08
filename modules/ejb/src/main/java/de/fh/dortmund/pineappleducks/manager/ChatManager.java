@@ -9,13 +9,13 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 public class ChatManager {
-    //TODO könnt ihr euch das angucken? Ich hab mich am anderen Manager orientiert, aber ich habe das gefühl, dass das so nicht ganz stimmt?
+
     public Chat getChatByID(int chatID) {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("Chat");
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("TEST");
         EntityManager man = factory.createEntityManager();
 
         Query query = man.createQuery(
-                "SELECT c FROM Chat c WHERE c.ID = :chatID", Chat.class);
+                "SELECT c FROM Chat c WHERE c.chatId = :chatID", Chat.class);
         query.setParameter("chatID", chatID);
 
         Chat cat = (Chat) query.getSingleResult();
@@ -23,11 +23,11 @@ public class ChatManager {
     }
 
     public ServerMessage getAntwort(int messageID) {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("ServerAntwort");
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("TEST");
         EntityManager man = factory.createEntityManager();
 
         Query query = man.createQuery(
-                "SELECT m FROM Message m WHERE m.ID = :messageID", ServerMessage.class);
+                "SELECT m FROM Message m WHERE m.messageId = :messageID", ServerMessage.class);
         query.setParameter("messageID", messageID);
 
         ServerMessage antwort = (ServerMessage) query.getSingleResult();
@@ -35,11 +35,11 @@ public class ChatManager {
     }
 
     public ServerMessage getServerMessageByID(int messageID) {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("ServerMessage");
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("TEST");
         EntityManager man = factory.createEntityManager();
 
         Query query = man.createQuery(
-                "SELECT m FROM ServerMessage m WHERE m.ID = :messageID", ServerMessage.class);
+                "SELECT m FROM ServerMessage m WHERE m.messageId = :messageID", ServerMessage.class);
         query.setParameter("messageID", messageID);
 
         ServerMessage message = (ServerMessage) query.getSingleResult();
