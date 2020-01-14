@@ -10,11 +10,23 @@ import java.io.IOException;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
+    Class Resp{
+        String id;
+        Date created;
+        String userId;
+                    public Resp(String id, String user){
+            created = new Date();
+            created = created.getTime();
+            this.id = id;
+            userId = user;
+        }
+    }
+    int respId = 1;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String username = req.getParameter("name");
+        String username = req.getParameter("username");
         String password = req.getParameter("password");
 
         Login login = new Login(username, password);
@@ -23,7 +35,21 @@ public class LoginServlet extends HttpServlet {
         }
         else{
          login.register();
+            Resp resp = new Resp(Integer.toString(respId), username)
+                    respId++;
+            try {
+                Gson gson = new Gson();
+                String loginString = gson.toJson(resp);
+                PrintWriter out = resp.getWriter();
+                resp.setContentType("application/json");
+                resp.setCharacterEncoding("UTF-8");
+                out.print(loginString);
+                out.flush();
+            } catch (ConstructException e) {
+                System.err.println(e.getMessage());
+            }
         }
+
     }
 
     @Override
@@ -32,7 +58,20 @@ public class LoginServlet extends HttpServlet {
         String password = req.getParameter("password");
 
         Login login = new Login(username, password);
-        //TODO Check login
+        if (login.checkLogin() == true) {
+            Resp resp = new Resp(Integer.toString(respId), username)
+            respId++;
+            try {
+                Gson gson = new Gson();
+                String loginString = gson.toJson(resp);
+                PrintWriter out = resp.getWriter();
+                resp.setContentType("application/json");
+                resp.setCharacterEncoding("UTF-8");
+                out.print(loginString);
+                out.flush();
+            } catch (ConstructException e) {
+                System.err.println(e.getMessage());
+            }
+        }
     }
-
 }
