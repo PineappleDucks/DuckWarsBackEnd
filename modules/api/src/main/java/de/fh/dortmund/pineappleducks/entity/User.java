@@ -1,8 +1,10 @@
 package de.fh.dortmund.pineappleducks.entity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
 public class User implements Serializable {
@@ -13,9 +15,6 @@ public class User implements Serializable {
 
     private String username;
     private String password;
-
-    @OneToMany
-    private List<Chat> chats;
 
     public User(){}
 
@@ -41,13 +40,5 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public List<Chat> getChats() {
-        return chats;
-    }
-
-    public void setChats(List<Chat> chats) {
-        this.chats = chats;
     }
 }
