@@ -1,50 +1,37 @@
 package de.fh.dortmund.pineappleducks.initEJB;
 
+import de.fh.dortmund.pineappleducks.entity.User;
+import de.fh.dortmund.pineappleducks.manager.UserManager;
+
 import java.util.LinkedHashMap;
 
+
 public class Init implements java.io.Serializable{
-    String id;
-    //side = Story:Jedi=true, Sith=false
-    boolean side;
+private User user;
 
-    public Init (LinkedHashMap map) throws ConstructException{
-        if (map.containsKey("id")) {
-            this.id = map.get("id").toString();
+public Init (LinkedHashMap map) throws ConstructException {
+
+
+    if (map.containsKey("username")) {
+        String username = map.get("username").toString();
+        try {
+            this.user = new UserManager().getUserByName(username);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        else throw new ConstructException("Es wurde keine ID uebermittelt! uebermittelte Daten:"+map.toString());
+    } else throw new ConstructException("Es wurde keine username uebermittelt! Key muss 'username' lauten! uebermittelte Daten:" + map.toString());
+    if(user==null) throw new ConstructException("User ist null!");
+}
 
-        if (map.containsKey("side")){
-            if (map.get("side").equals("true")) {
-                this.side=true;
-            }
-            else {
-                if (map.get("side").equals("false")) {
-                    this.side = false;
-                }
-                else throw new ConstructException("Side hat einen ungueltigen Wert! uebermittelte Daten:"+map.toString());
-            }
-        }
-        else throw new ConstructException("Es wurde keine Side uebermittelt! uebermittelte Daten:"+map.toString());
+    public Init(User user) {
+        this.user = user;
     }
 
-    public Init(String id, boolean side) {
-        this.id = id;
-        this.side = side;
+    public User getUser() {
+        return user;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public boolean isSide() {
-        return side;
-    }
-
-    public void setSide(boolean side) {
-        this.side = side;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

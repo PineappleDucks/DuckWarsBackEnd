@@ -6,7 +6,7 @@ import java.util.LinkedList;
 
 public class Chat {
 
-    private ArrayList<Message> messageList;
+    private List<Message> messageList;
     private Contact contact;
     private int backgroundId;
     private int chatId;
@@ -38,14 +38,14 @@ public class Chat {
         idCounter++;
     }
 
-    public Chat(ArrayList<Message> messageList, Contact contact) {
+    public Chat(List<Message> messageList, Contact contact) {
         this.messageList = messageList;
         this.contact = contact;
         chatId = ++idCounter;
         idCounter++;
     }
 
-    public Chat(ArrayList<Message> messageList, Contact contact, int backgroundId) {
+    public Chat(List<Message> messageList, Contact contact, int backgroundId) {
         this.messageList = messageList;
         this.contact = contact;
         this.backgroundId = backgroundId;
@@ -72,7 +72,7 @@ public class Chat {
 
     //-------------------getter and setter--------------------
 
-    public ArrayList<Message> getMessageList() {
+    public List<Message> getMessageList() {
         return messageList;
     }
 
