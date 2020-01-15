@@ -3,20 +3,22 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="723.0" y="0.0">de.fh.dortmund.pineappleducks.shared.Contact</node>
-    <node x="0.0" y="494.0">de.fh.dortmund.pineappleducks.shared.ServerMessage</node>
-    <node x="385.0" y="0.0">de.fh.dortmund.pineappleducks.shared.Chat</node>
-    <node x="52.0" y="0.0">de.fh.dortmund.pineappleducks.shared.Message</node>
+    <node x="788.0" y="0.0">de.fh.dortmund.pineappleducks.shared.Contact</node>
+    <node x="0.0" y="517.0">de.fh.dortmund.pineappleducks.shared.ServerMessage</node>
+    <node x="424.0" y="0.0">de.fh.dortmund.pineappleducks.shared.Chat</node>
+    <node x="58.5" y="0.0">de.fh.dortmund.pineappleducks.shared.Message</node>
   </nodes>
   <notes />
   <edges>
     <edge source="de.fh.dortmund.pineappleducks.shared.ServerMessage" target="de.fh.dortmund.pineappleducks.shared.Message">
-      <point x="0.0" y="-95.5" />
-      <point x="0.0" y="222.0" />
+      <point x="0.0" y="-112.5" />
+      <point x="0.0" y="233.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.9" x="704.4444444444443" y="223.66666666666663" />
-  <SelectedNodes />
+  <settings layout="Hierarchic Group" zoom="0.7784587752672858" x="766.62890625" y="299.63393825954864" />
+  <SelectedNodes>
+    <node>de.fh.dortmund.pineappleducks.shared.Contact</node>
+  </SelectedNodes>
   <Categories>
     <Category>Fields</Category>
     <Category>Constructors</Category>
