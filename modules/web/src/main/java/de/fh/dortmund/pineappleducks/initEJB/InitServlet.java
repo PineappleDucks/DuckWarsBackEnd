@@ -31,6 +31,8 @@ public class InitServlet extends HttpServlet {
         }
         catch (ConstructException e){
             System.err.println(e.getMessage());
+            PrintWriter out = resp.getWriter();
+            resp.setStatus(404);
         }
 }
         //Method to seperate the keys and values of the get-method in a LinkedHashMap
