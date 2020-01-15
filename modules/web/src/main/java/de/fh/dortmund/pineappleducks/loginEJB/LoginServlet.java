@@ -21,18 +21,22 @@ public class LoginServlet extends HttpServlet {
         String password = req.getParameter("password");
 
         Login login = new Login(username, password);
-        if(login.checkName()){
-            System.err.println("Fehler, der Name "+username+" ist schon vergeben");
-        }
-        else{
-         login.register();
-            Gson gson = new Gson();
-            String loginString = gson.toJson(resp);
-            PrintWriter out = resp.getWriter();
-            resp.setContentType("application/json");
-            resp.setCharacterEncoding("UTF-8");
-            out.print(loginString);
-            out.flush();
+        if (login.checkName()) {
+            System.err.println("Fehler, der Name " + username + " ist schon vergeben");
+        } else {
+            try {
+                login.register();
+                Gson gson = new Gson();
+                String loginString = gson.toJson(resp);
+                PrintWriter out = resp.getWriter();
+                resp.setContentType("application/json");
+                resp.setCharacterEncoding("UTF-8");
+                out.print(loginString);
+                out.flush();
+            } catch (ArrayIndexOutOfBoundsException e) {
+                e.printStackTrace();
+                System.err.println("Anfrage enthaelt Fehler!");
+            }
         }
 
     }
@@ -44,13 +48,19 @@ public class LoginServlet extends HttpServlet {
 
         Login login = new Login(username, password);
         if (login.checkLogin()) {
-            Gson gson = new Gson();
-            String loginString = gson.toJson(resp);
-            PrintWriter out = resp.getWriter();
-            resp.setContentType("application/json");
-            resp.setCharacterEncoding("UTF-8");
-            out.print(loginString);
-            out.flush();
+
+            try {
+                Gson gson = new Gson();
+                String loginString = gson.toJson(resp);
+                PrintWriter out = resp.getWriter();
+                resp.setContentType("application/json");
+                resp.setCharacterEncoding("UTF-8");
+                out.print(loginString);
+                out.flush();
+            } catch (ArrayIndexOutOfBoundsException e) {
+                e.printStackTrace();
+                System.err.println("Anfrage enthaelt Fehler!");
+            }
         }
     }
 }
