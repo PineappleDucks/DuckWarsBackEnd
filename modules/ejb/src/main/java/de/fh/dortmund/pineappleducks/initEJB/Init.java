@@ -4,7 +4,7 @@ import de.fh.dortmund.pineappleducks.entity.User;
 import de.fh.dortmund.pineappleducks.manager.UserManager;
 
 import java.util.LinkedHashMap;
-import java.util.ArrayList;
+
 
 public class Init implements java.io.Serializable{
 private User user;
