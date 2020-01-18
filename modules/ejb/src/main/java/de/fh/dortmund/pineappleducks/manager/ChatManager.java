@@ -10,24 +10,24 @@ import javax.persistence.Query;
 
 public class ChatManager {
 
-    public Chat getChatByID(int chatID) {
+    public Chat getChatByID(Long chatID) {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("TEST");
         EntityManager man = factory.createEntityManager();
 
         Query query = man.createQuery(
-                "SELECT c FROM Chat c WHERE c.chatId = :chatID", Chat.class);
+                "SELECT c FROM Chat c WHERE c.chatId = :chatID", de.fh.dortmund.pineappleducks.entity.Chat.class);
         query.setParameter("chatID", chatID);
 
         Chat cat = (Chat) query.getSingleResult();
         return cat;
     }
 
-    public ServerMessage getAntwort(int messageID) {
+    public ServerMessage getAntwort(int messageID) { // get Antwort des Servers auf die Message, die der Nutzer gewählt hat.
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("TEST");
         EntityManager man = factory.createEntityManager();
-
+//TODO finde nächste
         Query query = man.createQuery(
-                "SELECT m FROM Message m WHERE m.messageId = :messageID", ServerMessage.class);
+                "SELECT m FROM Message m WHERE m.messageId = :messageID", de.fh.dortmund.pineappleducks.entity.ServerMessage.class);
         query.setParameter("messageID", messageID);
 
         ServerMessage antwort = (ServerMessage) query.getSingleResult();
