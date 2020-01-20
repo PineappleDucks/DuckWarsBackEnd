@@ -5,6 +5,7 @@ public class Message {
     private String date;
     private int messageId;
     private Contact author;
+    private int next;
 
     //int counting up to generate messageId
     private static int idCounter;
@@ -92,4 +93,11 @@ public class Message {
         Message.idCounter = idCounter;
     }
 
+    public long getNext() {
+        return next;
+    }
+
+    public void setNext(int nextID) {
+        this.next = nextID;
+    }
 }
