@@ -1,0 +1,8 @@
+package de.fh.dortmund.pineappleducks.login;
+
+import javax.ejb.Remote;
+
+@Remote
+public interface LoginBeanRemote {
+    String persist (String email, String password);
+}
