@@ -6,6 +6,5 @@ import java.util.List;
 
 public class ServerMessage extends Message {
 
-    //@ManyToMany(targetEntity = Message.class)
-    //private List<Message> dialogOptions;
+    private List<Message> dialogOptions;
 }

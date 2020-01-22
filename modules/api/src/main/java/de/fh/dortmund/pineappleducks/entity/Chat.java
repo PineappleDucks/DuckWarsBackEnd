@@ -11,11 +11,9 @@ public class Chat implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long chatId;
 
-    //@OneToMany(targetEntity = Contact.class)
-    //private Contact contact;
+    private Contact contact;
 
-    //@ManyToMany(targetEntity = Message.class)
-    //private List<Message> messageList;
+    private List<Message> messageList;
 
     private Integer backgroundId;
 
