@@ -17,7 +17,7 @@ public class RegisterServlet extends HttpServlet {
     RegisterBeanLocal registerBeanLocal;
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
         // get params
         String username = req.getParameter("name");
