@@ -3,13 +3,17 @@ package de.fh.dortmund.pineappleducks.initEJB;
 import de.fh.dortmund.pineappleducks.entity.User;
 import de.fh.dortmund.pineappleducks.manager.UserManager;
 
+import javax.ejb.Stateful;
 import java.util.LinkedHashMap;
 
-
+@Stateful
 public class Init implements java.io.Serializable{
 private User user;
 
-public Init (LinkedHashMap map) throws ConstructException {
+    public Init() {
+    }
+
+    public void use(LinkedHashMap map) throws ConstructException {
 
 
     if (map.containsKey("username")) {

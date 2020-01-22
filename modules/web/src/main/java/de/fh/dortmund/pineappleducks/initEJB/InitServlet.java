@@ -1,6 +1,6 @@
 package de.fh.dortmund.pineappleducks.initEJB;
 
-import javax.servlet.ServletException;
+import javax.ejb.EJB;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,13 +14,15 @@ import com.google.gson.*;
 @WebServlet("/init")
 public class InitServlet extends HttpServlet {
 
+    @EJB
+    Init init;
+
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        System.out.println(req.getRequestURL());  http://localhost:8080/web/init
-//        System.out.println(req.getRequestURI());  /web/init
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws  IOException {
+
 
         try {
-            Init init = new Init(dequery(req.getQueryString()));
+            init.use(dequery(req.getQueryString()));
             Gson gson = new Gson();
             String initString = gson.toJson(init);
             PrintWriter out = resp.getWriter();
@@ -29,14 +31,16 @@ public class InitServlet extends HttpServlet {
             out.print(initString);
             out.flush();
         }
+//        when user not found: set status to 404 and send error message
         catch (ConstructException e){
             System.err.println(e.getMessage());
             PrintWriter out = resp.getWriter();
             resp.setStatus(404);
+            out.print("User could not be found!");
         }
 }
         //Method to seperate the keys and values of the get-method in a LinkedHashMap
-        //hello=halli&key2=value2&key3=value3
+        //Bsp.: hello=halli&key2=value2&key3=value3
     private LinkedHashMap dequery(String query){
         LinkedHashMap map = new LinkedHashMap();
         try {
@@ -51,10 +55,8 @@ public class InitServlet extends HttpServlet {
                     String[] kvSplit = s.split("=");
                     String k = kvSplit[0];
                     String v = kvSplit[1];
-//                System.out.println("Key: " + k + " Value: " + v);
                     map.put(k, v);
                 }
-//            System.out.println(map.toString());
                 return map;
             }
         }
