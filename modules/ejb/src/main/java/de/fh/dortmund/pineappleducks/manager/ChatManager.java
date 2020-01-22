@@ -25,12 +25,12 @@ public class ChatManager {
     public ServerMessage getAntwort(int messageID) { // get Antwort des Servers auf die Message, die der Nutzer gewählt hat.
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("TEST");
         EntityManager man = factory.createEntityManager();
-//TODO finde nächste
         Query query = man.createQuery(
                 "SELECT m FROM Message m WHERE m.messageId = :messageID", de.fh.dortmund.pineappleducks.entity.ServerMessage.class);
         query.setParameter("messageID", messageID);
 
-        ServerMessage antwort = (ServerMessage) query.getSingleResult();
+        ServerMessage temp = (ServerMessage) query.getSingleResult();
+        ServerMessage antwort = getServerMessageByID((int) temp.getNext());
         return antwort;
     }
 
