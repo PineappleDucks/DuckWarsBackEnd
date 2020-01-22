@@ -22,4 +22,14 @@ public class RegisterBean implements RegisterBeanRemote, RegisterBeanLocal{
             throw new RuntimeException("Es ist ein Fehler bei der Persistenz aufgetreten!");
         }
     }
+
+    public Boolean checkForExistingUserName(String username){
+        UserManager manager = new UserManager();
+        User user = manager.getUserByName(username);
+        if(user == null){
+            return false;
+        }else{
+            return true;
+        }
+    }
 }

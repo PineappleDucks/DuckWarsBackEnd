@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:alpine
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - db:/var/lib/postgresql/data
+    env_file:
+      - db.env
+
+  app:
+    build: .
+    restart: always
+    ports:
+      - 8080:8080
+      - 9990:9990
+    volumes:
+      - wildfly:/var/www/html:ro
+    depends_on:
+      - db
+
+volumes:
+  db:
+  wildfly:

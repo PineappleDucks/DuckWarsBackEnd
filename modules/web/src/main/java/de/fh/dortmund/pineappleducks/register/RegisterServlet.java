@@ -1,7 +1,8 @@
 package de.fh.dortmund.pineappleducks.register;
 
+import com.google.gson.Gson;
+
 import javax.ejb.EJB;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,10 +17,45 @@ public class RegisterServlet extends HttpServlet {
     RegisterBeanLocal registerBeanLocal;
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        PrintWriter writer = resp.getWriter();
-        //String login = req.getParameter("login");
-        //String password = req.getParameter("password");
-        writer.print(registerBeanLocal.persist("hallo", "hallo"));
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
+        // get params
+        String username = req.getParameter("name");
+        String password = req.getParameter("password");
+
+        if (registerBeanLocal.checkForExistingUserName(username) == Boolean.FALSE) {
+
+            // register
+            registerBeanLocal.persist(username, password);
+
+            // new gson class for output
+            Gson gson = new Gson();
+
+            // get writer
+            PrintWriter out = resp.getWriter();
+
+            // set output metadata
+            resp.setContentType("application/json");
+            resp.setCharacterEncoding("UTF-8");
+
+            // print output
+            out.print("register correct");
+            out.flush();
+        } else {
+            // username is used
+
+            // get writer
+            PrintWriter out = resp.getWriter();
+
+            // set output metadata
+            resp.setContentType("application/json");
+            resp.setCharacterEncoding("UTF-8");
+            resp.setStatus(403);
+
+            // print output
+            out.print("username in use");
+            out.flush();
+
+        }
     }
 }

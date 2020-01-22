@@ -14,29 +14,29 @@ public class Login implements java.io.Serializable{
     }
 
     public boolean checkLogin(){
-        User test;
-        test = manager.getUserByNameAndPassword(user.getUsername(), user.getPassword());
-        if(user.getUsername()==test.getUsername()){
-            return true;
-        }
-        else{
-            return false;
-        }
+        try {
+            User found = manager.getUserByNameAndPassword(user.getUsername(), user.getPassword());
 
-    }
-    public boolean checkName(){
-        User test;
-        test = manager.getUserByName(user.getUsername());
-        if(user.getUsername()==test.getUsername()){
-            return true;
-        }
-        else{
+            return found.getUsername().equals(user.getUsername());
+        } catch(Exception e) {
             return false;
         }
     }
+
+    public boolean checkName(){
+        try {
+            User found = manager.getUserByName(user.getUsername());
+
+            return found.getUsername().equals(user.getUsername());
+        } catch(Exception e) {
+            return false;
+        }
+    }
+
     public void register(){
         manager.registerUser(user.getUsername(), user.getPassword());
     }
+
     public void getSave(){
 
     }

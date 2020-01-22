@@ -2,10 +2,11 @@ package de.fh.dortmund.pineappleducks.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import java.util.List;
 
 public class ServerMessage extends Message {
 
-    //@ManyToMany(targetEntity = Message.class)
-    //private List<Message> dialogOptions;
+    @OneToMany
+    private List<Message> dialogOptions;
 }

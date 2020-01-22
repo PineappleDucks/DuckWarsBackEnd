@@ -17,9 +17,9 @@ public class Chat implements java.io.Serializable {
 
     public ServerMessage nachrichtSenden(long chatID, int antwortID) {
         de.fh.dortmund.pineappleducks.shared.Chat chat = manager.getChatByID(chatID);
-        Message newMessage = new Message();
-        chat.addMessage(newMessage);
-        ServerMessage antwort = manager.getAntwort(antwortID);
+        Message newMessage = manager.getServerMessageByID(antwortID);
+        chat.addMessage(newMessage); // Nachricht des Nutzers in Chat
+        ServerMessage antwort = manager.getAntwort(antwortID); // Server sendet Antwort
         return antwort;
     }
 }

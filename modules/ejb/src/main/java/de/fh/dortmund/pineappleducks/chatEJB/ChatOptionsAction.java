@@ -21,7 +21,7 @@ public class ChatOptionsAction implements Action {
         List<Message> listMessages = objectChat.getMessageList();
         Message message = listMessages.get(listMessages.size());
         int nachrichtID = message.getMessageId();
-        List<Message> ret = manager.getServerMessageByID(nachrichtID).getDialogOptions();
+        Message[] ret = manager.getServerMessageByID(nachrichtID).getDialogOptions();
 
     }
 }
