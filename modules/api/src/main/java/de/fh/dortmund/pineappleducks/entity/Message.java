@@ -11,6 +11,7 @@ public class Message implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long messageId;
 
+    @ManyToOne
     private Contact author;
 
     private String text;

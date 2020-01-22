@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import java.util.List;
 
 public class UserManager {
 
@@ -17,8 +18,13 @@ public class UserManager {
                 "SELECT u FROM User u WHERE u.username = :username", User.class);
         query.setParameter("username", username);
 
-        User user = (User) query.getSingleResult();
-        return user;
+        List<User> userList = (List<User>) query.getResultList();
+
+        if(userList.isEmpty()){
+            return null;
+        }else{
+            return userList.get(0);
+        }
     }
 
     public User getUserByNameAndPassword(String username, String password){

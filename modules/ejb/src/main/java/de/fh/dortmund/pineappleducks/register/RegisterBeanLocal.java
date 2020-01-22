@@ -6,4 +6,5 @@ import javax.ejb.Local;
 public interface RegisterBeanLocal {
 
     String persist ( String email, String password);
+    Boolean checkForExistingUserName(String username);
 }

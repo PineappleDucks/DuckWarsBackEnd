@@ -1,8 +1,8 @@
 package de.fh.dortmund.pineappleducks.register;
 
 import com.google.gson.Gson;
-import de.fh.dortmund.pineappleducks.loginEJB.Login;
 
+import javax.ejb.EJB;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,22 +13,20 @@ import java.io.PrintWriter;
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
 
+    @EJB
+    RegisterBeanLocal registerBeanLocal;
+
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
         // get params
         String username = req.getParameter("name");
         String password = req.getParameter("password");
 
-        // new login class
-        Login login = new Login(username, password);
-
-        // check login
-        if (!login.checkName()) {
-            // username not used
+        if (registerBeanLocal.checkForExistingUserName(username) == Boolean.FALSE) {
 
             // register
-            login.register();
+            registerBeanLocal.persist(username, password);
 
             // new gson class for output
             Gson gson = new Gson();
