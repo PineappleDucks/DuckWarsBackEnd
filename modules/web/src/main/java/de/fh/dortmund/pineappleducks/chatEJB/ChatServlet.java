@@ -18,11 +18,11 @@ import static java.lang.Integer.parseInt;
 public class ChatServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+// fragt Antwort-Optionen für den Nutzer ab
         int messageId = parseInt(req.getParameter("messageId"));
         Chat chat = new Chat();
         Gson gson = new Gson();
-        Message[] ant = chat.getOptions(messageId);
+        Message[] ant = chat.getOptions(messageId); // get mögliche Antworten
 
         PrintWriter out = resp.getWriter();
         resp.setContentType("application/json");
@@ -35,6 +35,7 @@ public class ChatServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // schickt Antwort des Nutzers, erhält Antwort des Servers zurück
         int messageId = parseInt(req.getParameter("messageId"));
         int chatId = parseInt(req.getParameter("chatId"));
         Chat chat = new Chat();
