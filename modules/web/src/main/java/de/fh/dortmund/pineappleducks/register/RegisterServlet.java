@@ -36,7 +36,6 @@ public class RegisterServlet extends HttpServlet {
             resp.setStatus(403);
             out.print("username in use");
             out.flush();
-
         }
     }
 }
