@@ -5,6 +5,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.LinkedHashMap;
@@ -19,24 +20,30 @@ public class InitServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws  IOException {
-
-
-        try {
-            init.use(dequery(req.getQueryString()));
-            Gson gson = new Gson();
-            String initString = gson.toJson(init);
+        HttpSession session = req.getSession(false);
+        if(session != null){
+            try {
+                init.use(dequery(req.getQueryString()));
+                Gson gson = new Gson();
+                String initString = gson.toJson(init);
+                PrintWriter out = resp.getWriter();
+                resp.setContentType("application/json");
+                resp.setCharacterEncoding("UTF-8");
+                out.print(initString);
+                out.flush();
+            } catch (ConstructException e){
+                System.err.println(e.getMessage());
+                PrintWriter out = resp.getWriter();
+                resp.setStatus(404);
+                out.print("User could not be found!");
+            }
+        }else{
             PrintWriter out = resp.getWriter();
             resp.setContentType("application/json");
             resp.setCharacterEncoding("UTF-8");
-            out.print(initString);
+            resp.setStatus(401);
+            out.print("unauthorized");
             out.flush();
-        }
-//        when user not found: set status to 404 and send error message
-        catch (ConstructException e){
-            System.err.println(e.getMessage());
-            PrintWriter out = resp.getWriter();
-            resp.setStatus(404);
-            out.print("User could not be found!");
         }
 }
         //Method to seperate the keys and values of the get-method in a LinkedHashMap

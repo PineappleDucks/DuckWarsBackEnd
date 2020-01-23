@@ -1,7 +1,8 @@
-package de.fh.dortmund.pineappleducks.loginEJB;
+package de.fh.dortmund.pineappleducks.login;
 
 import com.google.gson.Gson;
 
+import javax.ejb.EJB;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,45 +13,26 @@ import java.io.PrintWriter;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
+    @EJB
+    LoginBean loginBean;
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-
-        // get params
         String username = req.getParameter("name");
         String password = req.getParameter("password");
-
-        // new login class
-        Login login = new Login(username, password);
-
-        // check login
-        if (login.checkLogin()) {
-            // login correct
-
-            // new gson class for output
+        if (loginBean.checkForValidCredentials(username, password)) {
             Gson gson = new Gson();
-
-            // get writer
             PrintWriter out = resp.getWriter();
-
-            // set output metadata
             resp.setContentType("application/json");
             resp.setCharacterEncoding("UTF-8");
-
-            // print output
             out.print("login correct");
             out.flush();
+            req.getSession(true);
         } else {
-            // login wrong
-
-            // get writer
             PrintWriter out = resp.getWriter();
-
-            // set output metadata
             resp.setContentType("application/json");
             resp.setCharacterEncoding("UTF-8");
             resp.setStatus(403);
-
-            // print output
             out.print("wrong login");
             out.flush();
         }
