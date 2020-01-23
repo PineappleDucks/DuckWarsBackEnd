@@ -20,8 +20,9 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String username = req.getParameter("name");
         String password = req.getParameter("password");
+        boolean helleseite = req.getParameter("helleseite");
         if (registerBean.checkForExistingUserName(username) == Boolean.FALSE) {
-            registerBean.persist(username, password);
+            registerBean.persist(username, password, helleseite);
             Gson gson = new Gson();
             PrintWriter out = resp.getWriter();
             resp.setContentType("application/json");
