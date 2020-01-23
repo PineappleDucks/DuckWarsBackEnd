@@ -14,20 +14,21 @@ import java.io.PrintWriter;
 public class RegisterServlet extends HttpServlet {
 
     @EJB
-    RegisterBeanLocal registerBeanLocal;
+    RegisterBean registerBean;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String username = req.getParameter("name");
         String password = req.getParameter("password");
-        if (registerBeanLocal.checkForExistingUserName(username) == Boolean.FALSE) {
-            registerBeanLocal.persist(username, password);
+        if (registerBean.checkForExistingUserName(username) == Boolean.FALSE) {
+            registerBean.persist(username, password);
             Gson gson = new Gson();
             PrintWriter out = resp.getWriter();
             resp.setContentType("application/json");
             resp.setCharacterEncoding("UTF-8");
             out.print("register correct");
             out.flush();
+            req.getSession(true);
         } else {
             PrintWriter out = resp.getWriter();
             resp.setContentType("application/json");

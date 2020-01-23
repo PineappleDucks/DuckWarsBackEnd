@@ -6,11 +6,10 @@ import de.fh.dortmund.pineappleducks.manager.UserManager;
 import javax.ejb.Stateless;
 
 @Stateless
-public class RegisterBean implements RegisterBeanRemote, RegisterBeanLocal{
+public class RegisterBean {
 
     public RegisterBean () { }
 
-    @Override
     public String persist ( String login, String password) {
         UserManager manager = new UserManager();
         manager.registerUser(login, password);
