@@ -45,4 +45,32 @@ public class ChatManager {
         ServerMessage message = (ServerMessage) query.getSingleResult();
         return message;
     }
+    public void newChat(Chat chat){
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("TEST");
+        EntityManager man = factory.createEntityManager();
+
+        man.getTransaction().begin();
+        man.persist(chat);
+        man.getTransaction().commit();
+    }
+
+    public void uploadStory(List<Contact> contacts, List<ServerMessage> smessages, List<Message> messages){
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("TEST");
+        EntityManager man = factory.createEntityManager();
+        for(Contact c : contacts){
+            man.getTransaction().begin();
+            man.persist(c);
+            man.getTransaction().commit();
+        }
+        for(ServerMessage sm : smessages){
+            man.getTransaction().begin();
+            man.persist(s);
+            man.getTransaction().commit();
+        }
+        for(Message m : m){
+            man.getTransaction().begin();
+            man.persist(m);
+            man.getTransaction().commit();
+        }
+    }
 }

@@ -40,4 +40,12 @@ public class Message implements Serializable {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    public Contact getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Contact author) {
+        this.author = author;
+    }
 }

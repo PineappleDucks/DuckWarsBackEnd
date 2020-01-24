@@ -40,13 +40,15 @@ public class UserManager {
         return user;
     }
 
-    public  void registerUser(String username, String password){
+    public  void registerUser(String username, String password, Chat chat){
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("TEST");
         EntityManager man = factory.createEntityManager();
-
+        List<Chat> chats = new List<Chat>();
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
+        chats.add(chat);
+        user.setChats(chats);
 
         man.getTransaction().begin();
         man.persist(user);
