@@ -938,6 +938,7 @@ public class StartupBean {
 
         ChatManager cmanager = new ChatManager();
         cmanager.uploadStory(contacts, smessages, messages);
+
     }
 
 
