@@ -17,10 +17,10 @@ public class RegisterServlet extends HttpServlet {
     RegisterBean registerBean;
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String username = req.getParameter("name");
         String password = req.getParameter("password");
-        boolean helleseite = req.getParameter("helleseite");
+        Boolean helleseite = "helleseite".equals(req.getParameter("helleseite"));
         if (registerBean.checkForExistingUserName(username) == Boolean.FALSE) {
             registerBean.persist(username, password, helleseite);
             Gson gson = new Gson();
