@@ -14,21 +14,20 @@ public class RegisterBean {
 
     public String persist ( String login, String password, boolean helleseite) {
         UserManager manager = new UserManager();
+        manager.registerUser(login, password);
+        User savedUser = manager.getUserByName(login);
         ChatManager cmanager = new ChatManager();
         Chat chat;
         if(helleseite == true){
-            chat = New Chat(cmanager.getServerMessageByID(1000);)
+            chat = New Chat(cmanager.getServerMessageByID(1);)      //Todo ID
         }
         else {
-            chat = New Chat(cmanager.getServerMessageByID(2000);)
+            chat = New Chat(cmanager.getServerMessageByID(1);)      //Todo ID
         }
-
         List<Chat> chats = new List<Chat>();
         chats.add(chat);
         savedUser.setChats(chats);
-        cmanager.newChat(Chat chat);
-        manager.registerUser(login, password, chat);
-        User savedUser = manager.getUserByName(login);
+
         if(savedUser.getUsername().equals(login)
         && savedUser.getPassword().equals(password)){
             return "Die Registrierung war erfolgreich!";

@@ -3,7 +3,6 @@ package de.fh.dortmund.pineappleducks.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Map;
 
 @Entity
 public class User implements Serializable {
@@ -15,7 +14,10 @@ public class User implements Serializable {
     private String username;
     private String password;
 
-    // private Map<String, Boolean> conditions;
+    private Boolean helleseite;
+
+    @OneToMany
+    private List<Condition> conditions;
 
     @OneToMany
     private List<Chat> chats;
@@ -52,5 +54,21 @@ public class User implements Serializable {
 
     public void setChats(List<Chat> chats) {
         this.chats = chats;
+    }
+
+    public Boolean getHelleseite() {
+        return helleseite;
+    }
+
+    public void setHelleseite(Boolean helleseite) {
+        this.helleseite = helleseite;
+    }
+
+    public List<Condition> getConditions() {
+        return conditions;
+    }
+
+    public void setConditions(List<Condition> conditions) {
+        this.conditions = conditions;
     }
 }
