@@ -1,9 +1,0 @@
-package de.fh.dortmund.pineappleducks.login;
-
-import javax.ejb.Local;
-
-@Local
-public interface LoginBeanLocal {
-
-    String persist ( String email, String password);
-}
