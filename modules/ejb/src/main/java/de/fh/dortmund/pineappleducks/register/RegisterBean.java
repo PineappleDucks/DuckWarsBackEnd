@@ -1,11 +1,15 @@
 package de.fh.dortmund.pineappleducks.register;
 
 import de.fh.dortmund.pineappleducks.entity.User;
+import de.fh.dortmund.pineappleducks.manager.ChatManager;
 import de.fh.dortmund.pineappleducks.manager.UserManager;
 import de.fh.dortmund.pineappleducks.shared;
 import de.fh.dortmund.pineappleducks.manager;
+import de.fh.dortmund.pineappleducks.entity.Chat;
 
 import javax.ejb.Stateless;
+import java.util.ArrayList;
+import java.util.List;
 
 @Stateless
 public class RegisterBean {
@@ -14,17 +18,17 @@ public class RegisterBean {
 
     public String persist ( String login, String password, boolean helleseite) {
         UserManager manager = new UserManager();
-        manager.registerUser(login, password);
+        manager.registerUser(login, password, null);
         User savedUser = manager.getUserByName(login);
         ChatManager cmanager = new ChatManager();
         Chat chat;
         if(helleseite == true){
-            chat = New Chat(cmanager.getServerMessageByID(1);)      //Todo ID
+            chat = new Chat(cmanager.getServerMessageByID(1));      //Todo ID
         }
         else {
-            chat = New Chat(cmanager.getServerMessageByID(1);)      //Todo ID
+            chat = new Chat(cmanager.getServerMessageByID(1));      //Todo ID
         }
-        List<Chat> chats = new List<Chat>();
+        List<Chat> chats = new ArrayList<Chat>();
         chats.add(chat);
         savedUser.setChats(chats);
 

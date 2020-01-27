@@ -14,7 +14,7 @@ public class ServerMessage extends Message {
         return dialogOptions;
     }
 
-    public void List
+    //public void List
 
     public void setDialogOptions(List<Message> dialogOptions) {
         this.dialogOptions = dialogOptions;

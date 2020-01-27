@@ -1,12 +1,15 @@
 package de.fh.dortmund.pineappleducks.manager;
 
-import de.fh.dortmund.pineappleducks.shared.Chat;
-import de.fh.dortmund.pineappleducks.shared.ServerMessage;
+import de.fh.dortmund.pineappleducks.entity.Chat;
+import de.fh.dortmund.pineappleducks.entity.Contact;
+import de.fh.dortmund.pineappleducks.entity.Message;
+import de.fh.dortmund.pineappleducks.entity.ServerMessage;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import java.util.List;
 
 public class ChatManager {
 
@@ -64,10 +67,10 @@ public class ChatManager {
         }
         for(ServerMessage sm : smessages){
             man.getTransaction().begin();
-            man.persist(s);
+            man.persist(sm);
             man.getTransaction().commit();
         }
-        for(Message m : m){
+        for(Message m : messages){
             man.getTransaction().begin();
             man.persist(m);
             man.getTransaction().commit();
