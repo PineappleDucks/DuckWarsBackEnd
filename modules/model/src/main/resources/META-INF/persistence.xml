@@ -5,10 +5,11 @@
         <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
         <class>entity.chat.Chat</class>
         <class>entity.user.User</class>
+        <class>entity.user.UserData</class>
         <class>entity.chat.Contact</class>
         <class>entity.chat.Message</class>
-        <class>entity.chat.ServerMessage</class>
         <class>entity.chat.Condition</class>
+        <class>entity.chat.DialogOption</class>
         <properties>
             <property name="hibernate.hbm2ddl.auto" value="create" />
         </properties>
@@ -17,9 +18,10 @@
         <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
         <class>entity.chat.Chat</class>
         <class>entity.user.User</class>
+        <class>entity.user.UserData</class>
         <class>entity.chat.Contact</class>
         <class>entity.chat.Message</class>
-        <class>entity.chat.ServerMessage</class>
+        <class>entity.chat.DialogOption</class>
         <properties>
             <property name="hibernate.hbm2ddl.auto" value="create" />
         </properties>

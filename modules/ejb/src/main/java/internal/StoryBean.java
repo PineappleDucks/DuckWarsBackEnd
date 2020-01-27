@@ -18,7 +18,7 @@ public class StoryBean {
 
     private ContactManager manager = new ContactManager();
 
-    public List<Condition> conditions;
+    public List<Condition> conditions = new LinkedList<>();
 
     @PostConstruct
     public void init(){
