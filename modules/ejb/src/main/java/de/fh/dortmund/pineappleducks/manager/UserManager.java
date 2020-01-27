@@ -1,12 +1,14 @@
 package de.fh.dortmund.pineappleducks.manager;
 
 import de.fh.dortmund.pineappleducks.entity.User;
+import de.fh.dortmund.pineappleducks.entity.Chat;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.List;
+import java.util.ArrayList;
 
 public class UserManager {
 
@@ -40,15 +42,13 @@ public class UserManager {
         return user;
     }
 
-    public  void registerUser(String username, String password, Chat chat){
+    public  void registerUser(String username, String password, List<Chat> chat){
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("TEST");
         EntityManager man = factory.createEntityManager();
-        List<Chat> chats = new List<Chat>();
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
-        chats.add(chat);
-        user.setChats(chats);
+        user.setChats(chat);
 
         man.getTransaction().begin();
         man.persist(user);

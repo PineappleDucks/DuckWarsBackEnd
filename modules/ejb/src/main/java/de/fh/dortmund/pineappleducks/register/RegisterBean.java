@@ -6,6 +6,8 @@ import de.fh.dortmund.pineappleducks.manager.UserManager;
 import de.fh.dortmund.pineappleducks.shared;
 import de.fh.dortmund.pineappleducks.manager;
 import de.fh.dortmund.pineappleducks.entity.Chat;
+import de.fh.dortmund.pineappleducks.entity.Message;
+import java.util.ArrayList;
 
 import javax.ejb.Stateless;
 import java.util.ArrayList;
@@ -21,13 +23,15 @@ public class RegisterBean {
         manager.registerUser(login, password, null);
         User savedUser = manager.getUserByName(login);
         ChatManager cmanager = new ChatManager();
-        Chat chat;
+        Chat chat = new Chat();
+        List<Message> messageList = new ArrayList<Message>();
         if(helleseite == true){
-            chat = new Chat(cmanager.getServerMessageByID(1));      //Todo ID
+            messageList.add(cmanager.getServerMessageByID(1000));
         }
         else {
-            chat = new Chat(cmanager.getServerMessageByID(1));      //Todo ID
+            messageList.add(cmanager.getServerMessageByID(2000));
         }
+        chat.setMessageList(messageList);
         List<Chat> chats = new ArrayList<Chat>();
         chats.add(chat);
         savedUser.setChats(chats);

@@ -34,4 +34,8 @@ public class Chat implements Serializable {
     public void setBackgroundId(Integer backgroundId) {
         this.backgroundId = backgroundId;
     }
+
+    public void setMessageList(List<Message> messageList) {
+        this.messageList = messageList;
+    }
 }

@@ -15,6 +15,6 @@ public class UserRegistrationAction implements Action {
     @Override
     public void run() {
         UserManager userManager = new UserManager();
-        userManager.registerUser(user.getUsername(), user.getPassword());
+        userManager.registerUser(user.getUsername(), user.getPassword(),user.getChats());
     }
 }
