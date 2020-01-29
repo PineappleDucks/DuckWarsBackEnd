@@ -23,6 +23,7 @@ public class UserManager {
         if(userList.isEmpty()){
             return null;
         }else{
+            System.out.println(userList.toString());
             return userList.get(0);
         }
     }
@@ -36,8 +37,19 @@ public class UserManager {
         query.setParameter("username", username);
         query.setParameter("password", password);
 
-        User user = (User) query.getSingleResult();
-        return user;
+        List<User> users = (List<User>) query.getResultList();
+
+        if(users == null){
+            return null;
+        }
+
+        System.out.println(users.toString());
+
+        if(users.size() != 1){
+            return null;
+        }
+
+        return users.get(0);
     }
 
     public  void registerUser(String username, String password){

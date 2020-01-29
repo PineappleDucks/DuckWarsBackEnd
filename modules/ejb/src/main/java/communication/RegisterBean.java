@@ -32,10 +32,10 @@ public class RegisterBean {
 
         if(user == null){
             message.setSuccessful(true);
+        }else{
+            message.setSuccessful(false);
+            message.setMessage("Der Nutzername ist bereits vergeben!");
         }
-
-        message.setSuccessful(false);
-        message.setMessage("Der Nutzername ist bereits vergeben!");
         return message;
     }
 

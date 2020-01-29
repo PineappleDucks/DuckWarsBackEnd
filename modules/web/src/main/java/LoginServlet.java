@@ -1,4 +1,5 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
+import entity.InterfaceMessage;
 import entity.user.Credential;
 import communication.LoginBean;
 
@@ -21,8 +22,20 @@ public class LoginServlet extends HttpServlet {
         ObjectMapper mapper = new ObjectMapper();
         Credential credential = mapper.readValue(req.getReader(), Credential.class);
         Boolean validCredentials = loginBean.checkForValidCredentials(credential);
+
+        InterfaceMessage message = new InterfaceMessage();
+
         if(validCredentials){
             req.getSession(true);
+            message.setSuccessful(true);
+            message.setMessage("Login erfolgreich!");
+        }else{
+            message.setSuccessful(false);
+            message.setMessage("Die Nutzerdaten sind nicht korrekt!");
         }
+
+        mapper.writeValue(resp.getWriter(), message);
+
+
     }
 }
