@@ -28,9 +28,11 @@ public class LoginServlet extends HttpServlet {
         if(validCredentials){
             req.getSession(true);
             message.setSuccessful(true);
+            resp.setStatus(200);
             message.setMessage("Login erfolgreich!");
         }else{
             message.setSuccessful(false);
+            resp.setStatus(401);
             message.setMessage("Die Nutzerdaten sind nicht korrekt!");
         }
 
