@@ -10,15 +10,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ejb</artifactId>
+    <artifactId>model</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>de.fh-dortmund.pineappleducks</groupId>
-            <artifactId>model</artifactId>
-            <version>0.0.1-DEV</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
 
 </project>

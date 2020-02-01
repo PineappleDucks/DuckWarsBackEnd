@@ -6,11 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="api" />
+        <module name="model" />
         <module name="ejb" />
         <module name="web" />
         <module name="ear-deployment" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="api" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
