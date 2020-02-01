@@ -33,4 +33,20 @@ public class Chat {
     public void setBackgroundId(Integer backgroundId) {
         this.backgroundId = backgroundId;
     }
+
+    public Contact getContact() {
+        return contact;
+    }
+
+    public void setContact(Contact contact) {
+        this.contact = contact;
+    }
+
+    public List<Message> getMessageList() {
+        return messageList;
+    }
+
+    public void setMessageList(List<Message> messageList) {
+        this.messageList = messageList;
+    }
 }

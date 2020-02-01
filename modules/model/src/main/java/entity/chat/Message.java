@@ -1,6 +1,7 @@
 package entity.chat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -15,6 +16,7 @@ public class Message implements Serializable {
     @ManyToOne
     private Contact author;
 
+    @Size(max = 4096)
     private String text;
     private Date date;
 

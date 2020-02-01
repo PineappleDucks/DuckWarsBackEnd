@@ -11,10 +11,9 @@ import java.util.List;
 
 public class ContactManager {
 
-    public User getUserByFirstName(String firstname){
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("TEST");
-        EntityManager man = factory.createEntityManager();
+    private EntityManager man = EntityManagerUtil.getManager();
 
+    public User getUserByFirstName(String firstname){
         Query query = man.createQuery(
                 "SELECT u FROM Contact u WHERE u.firstName = :username", Contact.class);
         query.setParameter("username", firstname);
@@ -29,9 +28,6 @@ public class ContactManager {
     }
 
     public Contact getContactByFirstName(String firstname){
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("TEST");
-        EntityManager man = factory.createEntityManager();
-
         Query query = man.createQuery(
                 "SELECT u FROM Contact u WHERE u.firstName = :username", Contact.class);
         query.setParameter("username", firstname);
@@ -46,9 +42,6 @@ public class ContactManager {
     }
 
     public  void saveContact(Contact contact){
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("TEST");
-        EntityManager man = factory.createEntityManager();
-
         man.getTransaction().begin();
         man.persist(contact);
         man.getTransaction().commit();

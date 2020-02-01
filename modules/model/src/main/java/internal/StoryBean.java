@@ -2,6 +2,7 @@ package internal;
 
 import database.ContactManager;
 import database.InitManager;
+import database.UserUtil;
 import entity.chat.Condition;
 import entity.chat.Contact;
 import entity.chat.DialogOption;
@@ -661,6 +662,8 @@ public class StoryBean {
         dialogOptions = new ArrayList<DialogOption>();
         dialogOptions.add(createDialogOption("",conditions, last));
         last = createMessage("Warnung kritischer Schaden…", manager.getContactByFirstName("Bordcomputer"), dialogOptions);
+
+        UserUtil.initialMessage = last;
     }
 
     private Message createMessage(String text, Contact author, List<DialogOption> dialogOptions){
