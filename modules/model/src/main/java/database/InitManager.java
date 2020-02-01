@@ -19,6 +19,10 @@ public class InitManager {
         man.getTransaction().commit();
     }
 
+    public DialogOption getDialogOptionById(Long id){
+        return man.find(DialogOption.class, id);
+    }
+
     public void saveMessage(Message message) {
         man.getTransaction().begin();
         man.persist(message);

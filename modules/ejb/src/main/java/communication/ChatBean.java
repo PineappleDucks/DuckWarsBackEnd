@@ -1,5 +1,6 @@
 package communication;
 
+import database.InitManager;
 import database.UserManager;
 import entity.chat.Condition;
 import entity.chat.DialogOption;
@@ -14,10 +15,13 @@ import java.util.List;
 public class ChatBean {
 
     public Message messageSend(String username, DialogOption sendedMessage){
-        Message answer = sendedMessage.getAnswer();
+        InitManager manager = new InitManager();
+        DialogOption option = manager.getDialogOptionById(sendedMessage.getId());
+
+        Message answer = option.getAnswer();
         List<DialogOption> options  = answer.getDialogOptions();
-        List<DialogOption> possibleOptions = filterMessages(username, options);
-        answer.setDialogOptions(possibleOptions);
+        //List<DialogOption> possibleOptions = filterMessages(username, options);
+        answer.setDialogOptions(options);
         return answer;
     }
 
