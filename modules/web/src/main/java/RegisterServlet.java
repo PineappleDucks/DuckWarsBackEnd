@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/register")
@@ -26,7 +27,9 @@ public class RegisterServlet extends HttpServlet {
         if(message.getSuccessful()){
             req.getSession(true);
             resp.setStatus(200);
-            String sessionId = req.getSession(true).getId();
+            HttpSession session = req.getSession(true);
+            session.setAttribute("username", credential.getUsername());
+            String sessionId = session.getId();
 
             message.setToken(sessionId);
         } else {
