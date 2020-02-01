@@ -1,6 +1,7 @@
 package database;
 
 import entity.user.User;
+import entity.user.UserData;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -59,6 +60,12 @@ public class UserManager {
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
+
+        UserData userData = new UserData();
+        man.getTransaction().begin();
+        man.persist(userData);
+        man.getTransaction().commit();
+        user.setUserData(userData);
 
         man.getTransaction().begin();
         man.persist(user);

@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/register")
@@ -25,6 +26,14 @@ public class RegisterServlet extends HttpServlet {
         InterfaceMessage message = registerBean.persist(credential);
         if(message.getSuccessful()){
             req.getSession(true);
+            resp.setStatus(200);
+            HttpSession session = req.getSession(true);
+            session.setAttribute("username", credential.getUsername());
+            String sessionId = session.getId();
+
+            message.setToken(sessionId);
+        } else {
+            resp.setStatus(401);
         }
 
         mapper.writeValue(resp.getWriter(), message);

@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/login")
@@ -26,7 +27,11 @@ public class LoginServlet extends HttpServlet {
         InterfaceMessage message = new InterfaceMessage();
 
         if(validCredentials){
-            resp.setHeader("JSESSIONID", req.getSession(true).getId());
+            HttpSession session = req.getSession(true);
+            session.setAttribute("username", credential.getUsername());
+            String sessionId = session.getId();
+
+            message.setToken(sessionId);
             message.setSuccessful(true);
             resp.setStatus(200);
             message.setMessage("Login erfolgreich!");

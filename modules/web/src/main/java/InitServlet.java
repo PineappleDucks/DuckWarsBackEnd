@@ -25,7 +25,8 @@ public class InitServlet extends HttpServlet {
 
         if(session != null){
             resp.setStatus(200);
-            UserData data = initBean.getUserData(req.getHeader("username"));
+            String username = (String)session.getAttribute("username");
+            UserData data = initBean.getUserData(username);
             mapper.writeValue(resp.getWriter(), data);
         }else{
             resp.setStatus(401);
