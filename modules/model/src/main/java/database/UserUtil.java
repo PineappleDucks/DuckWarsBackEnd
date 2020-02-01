@@ -4,6 +4,7 @@ import entity.chat.Message;
 
 public class UserUtil {
 
-    public static Message initialMessage;
+    public static Message initialSithMessage;
+    public static Message initialJediMessage;
 
 }

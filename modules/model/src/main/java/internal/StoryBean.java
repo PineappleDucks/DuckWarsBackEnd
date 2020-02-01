@@ -7,7 +7,6 @@ import entity.chat.Condition;
 import entity.chat.Contact;
 import entity.chat.DialogOption;
 import entity.chat.Message;
-import entity.chat.Chat;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
@@ -543,6 +542,8 @@ public class StoryBean {
         dialogOptions = new ArrayList<DialogOption>();
         dialogOptions.add(createDialogOption("Was ist passiert?",conditions, last));
         Verbindung = createMessage("--NOTFALLREPORT --ABSTURZURSACHE: Energieabfall durch unbekannt SCHIFFSSTATUS: kritisch ENERGIESTATUS: kritisch WEITERES: Energie für Abflug unzureichend; durch technische Schäden nur noch Kurzstreckenflug möglich PLANET: unbekannt KLASSE: Mond REGION: Äußerer RandSEKTOR: unbekannt SYSTEM: unbekannt LANDSCHAFT: Wüste ATMOSPHÄRE: Stickstoff Klima: Kalt", manager.getContactByFirstName("D2R2"), dialogOptions);
+
+        UserUtil.initialJediMessage = Verbindung;
     }
 
     private void importSithMessages(){
@@ -663,7 +664,7 @@ public class StoryBean {
         dialogOptions.add(createDialogOption("",conditions, last));
         last = createMessage("Warnung kritischer Schaden…", manager.getContactByFirstName("Bordcomputer"), dialogOptions);
 
-        UserUtil.initialMessage = last;
+        UserUtil.initialSithMessage = last;
     }
 
     private Message createMessage(String text, Contact author, List<DialogOption> dialogOptions){

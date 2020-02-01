@@ -1,6 +1,9 @@
 package communication;
 
 import database.UserManager;
+import entity.chat.Chat;
+import entity.chat.DialogOption;
+import entity.chat.Message;
 import entity.user.User;
 import entity.user.UserData;
 
@@ -13,6 +16,14 @@ public class InitBean {
         UserManager manager = new UserManager();
         User user = manager.getUserByName(username);
         if(user != null){
+            UserData userdata = user.getUserData();
+            for(Chat chat : userdata.getChats()){
+                for(Message message : chat.getMessageList()){
+                    for(DialogOption option : message.getDialogOptions()){
+                        option.setAnswer(null);
+                    }
+                }
+            }
             return user.getUserData();
         }else{
             return null;

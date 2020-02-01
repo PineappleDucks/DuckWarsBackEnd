@@ -10,6 +10,8 @@ public class Chat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long chatId;
 
+    private Boolean jediSide;
+
     @ManyToOne
     private Contact contact;
 
@@ -48,5 +50,13 @@ public class Chat {
 
     public void setMessageList(List<Message> messageList) {
         this.messageList = messageList;
+    }
+
+    public Boolean getJediSide() {
+        return jediSide;
+    }
+
+    public void setJediSide(Boolean jediSide) {
+        this.jediSide = jediSide;
     }
 }

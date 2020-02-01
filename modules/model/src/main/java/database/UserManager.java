@@ -7,8 +7,6 @@ import entity.user.User;
 import entity.user.UserData;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.LinkedList;
 import java.util.List;
@@ -59,21 +57,38 @@ public class UserManager {
         user.setPassword(password);
 
         UserData userData = new UserData();
-        Chat chat = new Chat();
-        Contact contact = new ContactManager().getContactByFirstName("Bordcomputer");
-        Message message = UserUtil.initialMessage;
-        List<Message> messages = new LinkedList<>();
-        messages.add(message);
-        chat.setMessageList(messages);
-        chat.setContact(contact);
-        List<Chat> chats = new LinkedList<>();
-        chats.add(chat);
+        Chat chatSith = new Chat();
+        chatSith.setJediSide(false);
+        Contact contactSith = new ContactManager().getContactByFirstName("Bordcomputer");
+        Message messageSith = UserUtil.initialSithMessage;
+        List<Message> messagesSith = new LinkedList<>();
+        messagesSith.add(messageSith);
+        chatSith.setMessageList(messagesSith);
+        chatSith.setContact(contactSith);
 
         man.getTransaction().begin();
-        man.persist(chat);
+        man.persist(chatSith);
         man.getTransaction().commit();
 
+        Chat chatJedi = new Chat();
+        chatJedi.setJediSide(true);
+        Contact contactJedi = new ContactManager().getContactByFirstName("D2R2");
+        Message messageJedi = UserUtil.initialJediMessage;
+        List<Message> messagesJedi = new LinkedList<>();
+        messagesJedi.add(messageJedi);
+        chatJedi.setMessageList(messagesJedi);
+        chatJedi.setContact(contactJedi);
+
+        man.getTransaction().begin();
+        man.persist(chatJedi);
+        man.getTransaction().commit();
+
+        List<Chat> chats = new LinkedList<>();
+        chats.add(chatSith);
+        chats.add(chatJedi);
+
         userData.setChats(chats);
+
         man.getTransaction().begin();
         man.persist(userData);
         man.getTransaction().commit();
