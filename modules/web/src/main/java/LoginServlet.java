@@ -26,7 +26,10 @@ public class LoginServlet extends HttpServlet {
         InterfaceMessage message = new InterfaceMessage();
 
         if(validCredentials){
-            resp.setHeader("JSESSIONID", req.getSession(true).getId());
+            String sessionId = req.getSession(true).getId();
+
+            resp.setHeader("JSESSIONID", sessionId);
+            message.setToken(sessionId);
             message.setSuccessful(true);
             resp.setStatus(200);
             message.setMessage("Login erfolgreich!");

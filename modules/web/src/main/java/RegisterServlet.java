@@ -25,6 +25,12 @@ public class RegisterServlet extends HttpServlet {
         InterfaceMessage message = registerBean.persist(credential);
         if(message.getSuccessful()){
             req.getSession(true);
+            resp.setStatus(200);
+            String sessionId = req.getSession(true).getId();
+
+            message.setToken(sessionId);
+        } else {
+            resp.setStatus(401);
         }
 
         mapper.writeValue(resp.getWriter(), message);
