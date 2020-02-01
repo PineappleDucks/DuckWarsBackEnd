@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ContactManager {
 
-    public User getContactByFirstName(String firstname){
+    public User getUserByFirstName(String firstname){
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("TEST");
         EntityManager man = factory.createEntityManager();
 
@@ -25,6 +25,23 @@ public class ContactManager {
             return null;
         }else{
             return userList.get(0);
+        }
+    }
+
+    public Contact getContactByFirstName(String firstname){
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("TEST");
+        EntityManager man = factory.createEntityManager();
+
+        Query query = man.createQuery(
+                "SELECT u FROM Contact u WHERE u.firstName = :username", Contact.class);
+        query.setParameter("username", firstname);
+
+        List<Contact> contactList = (List<Contact>) query.getResultList();
+
+        if(contactList.isEmpty()){
+            return null;
+        }else{
+            return contactList.get(0);
         }
     }
 
