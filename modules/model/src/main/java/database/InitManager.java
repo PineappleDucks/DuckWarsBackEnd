@@ -1,5 +1,6 @@
 package database;
 
+import entity.chat.Chat;
 import entity.chat.DialogOption;
 import entity.chat.Message;
 
@@ -26,6 +27,12 @@ public class InitManager {
     public void saveMessage(Message message) {
         man.getTransaction().begin();
         man.persist(message);
+        man.getTransaction().commit();
+    }
+
+    public void saveChat(Chat chat){
+        man.getTransaction().begin();
+        man.persist(chat);
         man.getTransaction().commit();
     }
 }

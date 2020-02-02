@@ -2,10 +2,12 @@ package communication;
 
 import database.InitManager;
 import database.UserManager;
+import entity.chat.Chat;
 import entity.chat.Condition;
 import entity.chat.DialogOption;
 import entity.chat.Message;
 import entity.user.User;
+import entity.user.UserData;
 
 import javax.ejb.Stateless;
 import java.util.LinkedList;
@@ -16,11 +18,39 @@ public class ChatBean {
 
     public Message messageSend(String username, DialogOption sendedMessage){
         InitManager manager = new InitManager();
+        UserManager userManager = new UserManager();
         DialogOption option = manager.getDialogOptionById(sendedMessage.getId());
 
         Message answer = option.getAnswer();
         List<DialogOption> options  = answer.getDialogOptions();
         //List<DialogOption> possibleOptions = filterMessages(username, options);
+
+        User user = userManager.getUserByName(username);
+        UserData userdata = user.getUserData();
+
+        boolean chatExisting = false;
+        for(Chat chat : userdata.getChats()){
+            if (chat.getContact().equals(answer.getAuthor())){
+                chat.getMessageList().add(answer);
+
+                InitManager man = new InitManager();
+                man.saveChat(chat);
+
+                chatExisting = true;
+            }
+        }
+
+        if(!chatExisting){
+            Chat chatToCreate = new Chat();
+            List<Message> messages = new LinkedList<>();
+            messages.add(answer);
+            chatToCreate.setContact(answer.getAuthor());
+            chatToCreate.setMessageList(messages);
+            InitManager man = new InitManager();
+            man.saveChat(chatToCreate);
+        }
+
+
         answer.setDialogOptions(options);
         return answer;
     }
