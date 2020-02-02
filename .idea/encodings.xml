@@ -2,8 +2,12 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/modules/ejb/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/ejb/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/modules/model/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/modules/model/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/modules/web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/web/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/solutions/ear-deployment/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/solutions/ear-deployment/src/main/resources" charset="UTF-8" />
   </component>
 </project>
