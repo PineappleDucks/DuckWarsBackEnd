@@ -118,8 +118,8 @@ public class StoryBean {
 
         conditions = new ArrayList<Condition>();
         dialogOptions = new ArrayList<DialogOption>();
-        dialogOptions.add(createDialogOption("",conditions, null));
-        last = createMessage("ALARM Ein Abschuss-Projektil befindet sich gerade auf dem Weg zu uns. Es war schön, für dich gedient zu haben…", manager.getContactByFirstName("D2R2"), dialogOptions);
+        dialogOptions.add(createDialogOption("", conditions, null));
+        last = createMessage("ALARM " + "\n" + "Ein Abschuss-Projektil befindet sich gerade auf dem Weg zu uns. Es war schön, für dich gedient zu haben…", manager.getContactByFirstName("D2R2"), dialogOptions);
 
         conditions = new ArrayList<Condition>();
         dialogOptions = new ArrayList<DialogOption>();
@@ -251,8 +251,8 @@ public class StoryBean {
 
         conditions = new ArrayList<Condition>();
         dialogOptions = new ArrayList<DialogOption>();
-        dialogOptions.add(createDialogOption("Wir müssen uns auf den Planeten stürzen und uns selbst zerstören.",conditions, last));
-        last = createMessage("VERBINDUNG WURDE ABGEBROCHEN. Der Kommunikations-Port wurde zerstört. Das Imperium hat uns wohl durch die Verbindung mit der falschen Adresse aufspüren können und die komplette Kommunikation angezapft.", manager.getContactByFirstName("D2R2"), dialogOptions);
+        dialogOptions.add(createDialogOption("Wir müssen uns auf den Planeten stürzen und uns selbst zerstören.", conditions, last));
+        last = createMessage("VERBINDUNG WURDE ABGEBROCHEN." + "\n" + " Der Kommunikations-Port wurde zerstört. Das Imperium hat uns wohl durch die Verbindung mit der falschen Adresse aufspüren können und die komplette Kommunikation angezapft.", manager.getContactByFirstName("D2R2"), dialogOptions);
 
         conditions = new ArrayList<Condition>();
         dialogOptions = new ArrayList<DialogOption>();
@@ -286,8 +286,8 @@ public class StoryBean {
 
         conditions = new ArrayList<Condition>();
         dialogOptions = new ArrayList<DialogOption>();
-        dialogOptions.add(createDialogOption("",conditions, null));
-        last = createMessage("ALARM Ein Abschuss-Projektil befindet sich gerade auf dem Weg zu uns. Es war schön, für dich gedient zu haben…", manager.getContactByFirstName("D2R2"), dialogOptions);
+        dialogOptions.add(createDialogOption("", conditions, null));
+        last = createMessage("ALARM" + "\n" + " Ein Abschuss-Projektil befindet sich gerade auf dem Weg zu uns. Es war schön, für dich gedient zu haben…", manager.getContactByFirstName("D2R2"), dialogOptions);
 
         conditions = new ArrayList<Condition>();
         dialogOptions = new ArrayList<DialogOption>();
@@ -418,23 +418,23 @@ public class StoryBean {
 
         conditions = new ArrayList<Condition>();
         dialogOptions = new ArrayList<DialogOption>();
-        dialogOptions.add(createDialogOption("",conditions, last));
-        last = createMessage("VERBINDUNG HERGESTELLT. Beachte, dass wir nur über die gespeicherte Adresse kommunizieren um Risiken zu vermeiden!", manager.getContactByFirstName("D2R2"), dialogOptions);
+        dialogOptions.add(createDialogOption("", conditions, last));
+        last = createMessage("VERBINDUNG HERGESTELLT." + "\n" + " Beachte, dass wir nur über die gespeicherte Adresse kommunizieren um Risiken zu vermeiden!", manager.getContactByFirstName("D2R2"), dialogOptions);
 
         conditions = new ArrayList<Condition>();
         dialogOptions = new ArrayList<DialogOption>();
-        dialogOptions.add(createDialogOption("",conditions, last));
-        last = createMessage("Wir konnten jemanden erreichen! Hoffen wir jetzt das Beste… VERBINDUNG WIRD AUFGEBAUT…", manager.getContactByFirstName("D2R2"), dialogOptions);
+        dialogOptions.add(createDialogOption("", conditions, last));
+        last = createMessage("Wir konnten jemanden erreichen! Hoffen wir jetzt das Beste… " + "\n" + "VERBINDUNG WIRD AUFGEBAUT…", manager.getContactByFirstName("D2R2"), dialogOptions);
 
         conditions = new ArrayList<Condition>();
         dialogOptions = new ArrayList<DialogOption>();
-        dialogOptions.add(createDialogOption("",conditions, last));
-        last = createMessage("3. VERSUCH: Von den 5 aufgespürten Ports ist dies derjenige, der am weitesten entfernt ist. Er befindet sich auf dem Hauptplaneten des Mondes, auf dem wir uns gerade befinden. VERBINDUNGSANFRAGE…", manager.getContactByFirstName("D2R2"), dialogOptions);
+        dialogOptions.add(createDialogOption("", conditions, last));
+        last = createMessage("3. VERSUCH: Von den 5 aufgespürten Ports ist dies derjenige, der am weitesten entfernt ist. Er befindet sich auf dem Hauptplaneten des Mondes, auf dem wir uns gerade befinden. " + "\n" + "VERBINDUNGSANFRAGE…", manager.getContactByFirstName("D2R2"), dialogOptions);
 
         conditions = new ArrayList<Condition>();
         dialogOptions = new ArrayList<DialogOption>();
-        dialogOptions.add(createDialogOption("",conditions, last));
-        last = createMessage("VERBINDUNG WURDE GESCHLOSSEN. Also DAS war sicher kein Kommunikations-Port. Nur noch ein letzter Versuch!", manager.getContactByFirstName("D2R2"), dialogOptions);
+        dialogOptions.add(createDialogOption("", conditions, last));
+        last = createMessage("VERBINDUNG WURDE GESCHLOSSEN." + "\n" + " Also DAS war sicher kein Kommunikations-Port. Nur noch ein letzter Versuch!", manager.getContactByFirstName("D2R2"), dialogOptions);
 
         conditions = new ArrayList<Condition>();
         dialogOptions = new ArrayList<DialogOption>();
@@ -520,8 +520,8 @@ public class StoryBean {
 
         conditions = new ArrayList<Condition>();
         dialogOptions = new ArrayList<DialogOption>();
-        dialogOptions.add(createDialogOption("",conditions, last));
-        Verbindung = createMessage("Ich kann die Schiffsinformationen nicht in Gänze abrufen, sondern nur einzelne verbaute Teile.Ich versuche diese mal zu analysieren… ANALYSIERE…", manager.getContactByFirstName("D2R2"), dialogOptions);
+        dialogOptions.add(createDialogOption("", conditions, last));
+        Verbindung = createMessage("Ich kann die Schiffsinformationen nicht in Gänze abrufen, sondern nur einzelne verbaute Teile.Ich versuche diese mal zu analysieren… " + "\n" + "ANALYSIERE…", manager.getContactByFirstName("D2R2"), dialogOptions);
 
         conditions = new ArrayList<Condition>();
         dialogOptions = new ArrayList<DialogOption>();
@@ -541,7 +541,7 @@ public class StoryBean {
         conditions = new ArrayList<Condition>();
         dialogOptions = new ArrayList<DialogOption>();
         dialogOptions.add(createDialogOption("Was ist passiert?", conditions, last));
-        Verbindung = createMessage("--NOTFALLREPORT --" + "<br>" + "ABSTURZURSACHE: Energieabfall durch unbekannt" + "<br>" + "SCHIFFSSTATUS: kritisch" + "<br>" + "ENERGIESTATUS: kritisch" + "<br>" + " WEITERES: Energie für Abflug unzureichend; durch technische Schäden nur noch Kurzstreckenflug möglich " + "<br>" + "PLANET: unbekannt KLASSE: Mond REGION: Äußerer RandSEKTOR: unbekannt SYSTEM: unbekannt LANDSCHAFT: Wüste ATMOSPHÄRE: Stickstoff Klima: Kalt", manager.getContactByFirstName("D2R2"), dialogOptions);
+        Verbindung = createMessage("--NOTFALLREPORT --" + "\n" + "ABSTURZURSACHE: Energieabfall durch unbekannt" + "\n" + "SCHIFFSSTATUS: kritisch" + "\n" + "ENERGIESTATUS: kritisch" + "\n" + " WEITERES: Energie für Abflug unzureichend; durch technische Schäden nur noch Kurzstreckenflug möglich " + "\n" + "PLANET: unbekannt KLASSE: Mond REGION: Äußerer Rand SEKTOR: unbekannt SYSTEM: unbekannt LANDSCHAFT: Wüste ATMOSPHÄRE: Stickstoff KLIMA: Kalt", manager.getContactByFirstName("D2R2"), dialogOptions);
 
         UserUtil.initialJediMessage = Verbindung;
     }
