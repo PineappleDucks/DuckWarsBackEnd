@@ -54,4 +54,22 @@ public class InitManager {
         man.persist(chat);
         man.getTransaction().commit();
     }
+
+    public Chat getChatById(Long chatId){
+        Query query = man.createQuery(
+                "SELECT u FROM Chat u WHERE u.chatId = :cId", Chat.class);
+        query.setParameter("cId", chatId);
+
+        List<Chat> chats = (List<Chat>) query.getResultList();
+
+        if(chats == null){
+            return null;
+        }
+
+        if(chats.size() != 1){
+            return null;
+        }
+
+        return chats.get(0);
+    }
 }

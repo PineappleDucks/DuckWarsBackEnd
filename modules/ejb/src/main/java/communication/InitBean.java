@@ -20,6 +20,9 @@ public class InitBean {
             UserData userdata = user.getUserData();
             for(Chat chat : userdata.getChats()){
                 for(Message message : chat.getMessageList()){
+                    if(message.getDialogOptions() == null){
+                        continue;
+                    }
                     for(DialogOption option : message.getDialogOptions()){
                         EntityManagerUtil.getManager().detach(option);
                         option.setAnswer(null);
