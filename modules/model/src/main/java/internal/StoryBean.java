@@ -654,6 +654,7 @@ public class StoryBean {
         dialogOptions.add(createDialogOption("Was ist Passiert?",conditions, last));
         last = createMessage("Warnung kritischer Schaden…", manager.getContactByFirstName("Bordcomputer"), dialogOptions);
 
+        /*
         conditions = new ArrayList<Condition>();
         dialogOptions = new ArrayList<DialogOption>();
         dialogOptions.add(createDialogOption("",conditions, last));
@@ -663,6 +664,7 @@ public class StoryBean {
         dialogOptions = new ArrayList<DialogOption>();
         dialogOptions.add(createDialogOption("",conditions, last));
         last = createMessage("Warnung kritischer Schaden…", manager.getContactByFirstName("Bordcomputer"), dialogOptions);
+         */
 
         UserUtil.initialSithMessage = last;
     }
