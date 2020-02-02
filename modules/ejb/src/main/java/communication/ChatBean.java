@@ -42,8 +42,8 @@ public class ChatBean {
             if (chat.getContact().equals(answer.getAuthor())){
                 chat.getMessageList().add(answer);
 
-                InitManager man = new InitManager();
-                man.saveChat(chat);
+                //InitManager man = new InitManager();
+                //man.saveChat(chat);
 
                 chatExisting = true;
             }
