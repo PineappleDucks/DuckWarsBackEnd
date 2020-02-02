@@ -11,9 +11,9 @@ import entity.chat.Message;
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.ArrayList;
 
 @Startup
 @Singleton
@@ -540,8 +540,8 @@ public class StoryBean {
 
         conditions = new ArrayList<Condition>();
         dialogOptions = new ArrayList<DialogOption>();
-        dialogOptions.add(createDialogOption("Was ist passiert?",conditions, last));
-        Verbindung = createMessage("--NOTFALLREPORT --ABSTURZURSACHE: Energieabfall durch unbekannt SCHIFFSSTATUS: kritisch ENERGIESTATUS: kritisch WEITERES: Energie für Abflug unzureichend; durch technische Schäden nur noch Kurzstreckenflug möglich PLANET: unbekannt KLASSE: Mond REGION: Äußerer RandSEKTOR: unbekannt SYSTEM: unbekannt LANDSCHAFT: Wüste ATMOSPHÄRE: Stickstoff Klima: Kalt", manager.getContactByFirstName("D2R2"), dialogOptions);
+        dialogOptions.add(createDialogOption("Was ist passiert?", conditions, last));
+        Verbindung = createMessage("--NOTFALLREPORT --" + "<br>" + "ABSTURZURSACHE: Energieabfall durch unbekannt" + "<br>" + "SCHIFFSSTATUS: kritisch" + "<br>" + "ENERGIESTATUS: kritisch" + "<br>" + " WEITERES: Energie für Abflug unzureichend; durch technische Schäden nur noch Kurzstreckenflug möglich " + "<br>" + "PLANET: unbekannt KLASSE: Mond REGION: Äußerer RandSEKTOR: unbekannt SYSTEM: unbekannt LANDSCHAFT: Wüste ATMOSPHÄRE: Stickstoff Klima: Kalt", manager.getContactByFirstName("D2R2"), dialogOptions);
 
         UserUtil.initialJediMessage = Verbindung;
     }
