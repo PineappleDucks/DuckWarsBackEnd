@@ -3,6 +3,7 @@ package database;
 import entity.chat.Chat;
 import entity.chat.DialogOption;
 import entity.chat.Message;
+import entity.user.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -22,6 +23,24 @@ public class InitManager {
 
     public DialogOption getDialogOptionById(Long id){
         return man.find(DialogOption.class, id);
+    }
+
+    public DialogOption getDialogOptionByIdAlt(Long id){
+        Query query = man.createQuery(
+                "SELECT u FROM DialogOption u WHERE u.id = :doId", DialogOption.class);
+        query.setParameter("doId", id);
+
+        List<DialogOption> options = (List<DialogOption>) query.getResultList();
+
+        if(options == null){
+            return null;
+        }
+
+        if(options.size() != 1){
+            return null;
+        }
+
+        return options.get(0);
     }
 
     public void saveMessage(Message message) {

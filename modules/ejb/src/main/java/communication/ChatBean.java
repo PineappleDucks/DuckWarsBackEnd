@@ -19,7 +19,7 @@ public class ChatBean {
     public Message messageSend(String username, DialogOption sendedMessage){
         InitManager manager = new InitManager();
         UserManager userManager = new UserManager();
-        DialogOption option = manager.getDialogOptionById(sendedMessage.getId());
+        DialogOption option = manager.getDialogOptionByIdAlt(sendedMessage.getId());
 
         Message answer = option.getAnswer();
         List<DialogOption> options  = answer.getDialogOptions();
