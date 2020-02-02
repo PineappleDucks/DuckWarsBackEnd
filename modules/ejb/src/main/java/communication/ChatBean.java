@@ -17,7 +17,7 @@ import java.util.List;
 @Stateless
 public class ChatBean {
 
-    public Message messageSend(String username, DialogOption sendedMessage){
+    public Message messageSend(String username, String chatId,  DialogOption sendedMessage){
         InitManager manager = new InitManager();
         UserManager userManager = new UserManager();
         DialogOption option = manager.getDialogOptionByIdAlt(sendedMessage.getId());
@@ -25,12 +25,13 @@ public class ChatBean {
 
         Message answer = option.getAnswer();
         List<DialogOption> options;
-        try {
-            options = answer.getDialogOptions();
-        }catch(NullPointerException e){
-            System.out.println("DAS:" + option.getText() + "/" + option.getAnswer() + "/" + option.getId());
-            return null;
-        }
+        options = answer.getDialogOptions();
+
+        Chat chatToEdit = manager.getChatById(Long.valueOf(chatId));
+        Message message = new Message();
+        message.setText(sendedMessage.getText());
+        manager.saveMessage(message);
+        chatToEdit.getMessageList().add(message);
 
         //List<DialogOption> possibleOptions = filterMessages(username, options);
 

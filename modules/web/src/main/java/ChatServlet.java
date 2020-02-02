@@ -22,13 +22,14 @@ public class ChatServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         HttpSession session = req.getSession(false);
         String username = req.getHeader("username");
+        String chatId = req.getHeader("chatId");
         ObjectMapper mapper = new ObjectMapper();
 
         DialogOption reqMessage = mapper.readValue(req.getReader(), DialogOption.class);
 
         if(session != null){
             resp.setStatus(200);
-            Message message = chatBean.messageSend(username, reqMessage);
+            Message message = chatBean.messageSend(username, chatId, reqMessage);
             mapper.writeValue(resp.getWriter(), message);
         }else{
             resp.setStatus(401);
