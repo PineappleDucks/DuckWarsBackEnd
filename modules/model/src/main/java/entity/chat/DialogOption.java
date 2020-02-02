@@ -15,7 +15,7 @@ public class DialogOption {
     @OneToMany
     private List<Condition> conditions;
 
-    @ManyToOne
+    @OneToOne
     private Message answer;
 
     public long getId() {

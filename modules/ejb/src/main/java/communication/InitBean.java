@@ -1,5 +1,6 @@
 package communication;
 
+import database.EntityManagerUtil;
 import database.UserManager;
 import entity.chat.Chat;
 import entity.chat.DialogOption;
@@ -20,6 +21,7 @@ public class InitBean {
             for(Chat chat : userdata.getChats()){
                 for(Message message : chat.getMessageList()){
                     for(DialogOption option : message.getDialogOptions()){
+                        EntityManagerUtil.getManager().detach(option);
                         option.setAnswer(null);
                     }
                 }

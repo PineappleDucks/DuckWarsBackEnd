@@ -1,5 +1,6 @@
 package communication;
 
+import database.EntityManagerUtil;
 import database.InitManager;
 import database.UserManager;
 import entity.chat.Chat;
@@ -20,9 +21,17 @@ public class ChatBean {
         InitManager manager = new InitManager();
         UserManager userManager = new UserManager();
         DialogOption option = manager.getDialogOptionByIdAlt(sendedMessage.getId());
+        System.out.println(option);
 
         Message answer = option.getAnswer();
-        List<DialogOption> options  = answer.getDialogOptions();
+        List<DialogOption> options;
+        try {
+            options = answer.getDialogOptions();
+        }catch(NullPointerException e){
+            System.out.println("DAS:" + option.getText() + "/" + option.getAnswer() + "/" + option.getId());
+            return null;
+        }
+
         //List<DialogOption> possibleOptions = filterMessages(username, options);
 
         User user = userManager.getUserByName(username);
@@ -50,8 +59,11 @@ public class ChatBean {
             man.saveChat(chatToCreate);
         }
 
-
         answer.setDialogOptions(options);
+        for(DialogOption dialogOption : options){
+            EntityManagerUtil.getManager().detach(dialogOption);
+            dialogOption.setAnswer(null);
+        }
         return answer;
     }
 
