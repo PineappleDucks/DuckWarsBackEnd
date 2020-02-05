@@ -15,7 +15,7 @@ public class Chat {
     @ManyToOne
     private Contact contact;
 
-    @OneToMany
+    @ManyToMany
     private List<Message> messageList;
 
     private Integer backgroundId;

@@ -25,6 +25,10 @@ public class ChatBean {
 
         Message answer = option.getAnswer();
         List<DialogOption> options;
+        if(answer == null){
+            Message message = new Message();
+            message.setText("ENDE");
+        }
         options = answer.getDialogOptions();
 
         Chat chatToEdit = manager.getChatById(Long.valueOf(chatId));
@@ -58,6 +62,7 @@ public class ChatBean {
             chatToCreate.setMessageList(messages);
             InitManager man = new InitManager();
             man.saveChat(chatToCreate);
+            userdata.getChats().add(chatToCreate);
         }
 
         answer.setDialogOptions(options);
